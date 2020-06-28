@@ -1,5 +1,12 @@
+* {
+  color: rgba(255, 255, 255, 0.87);
+}
 body {
   margin: 0px;
   padding: 0px;
   background-color: #121212;
+}
+
+#root {
+  height: 100vh;
 }

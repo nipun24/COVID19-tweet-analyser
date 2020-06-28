@@ -9,12 +9,6 @@ const darkTheme = createMuiTheme({
     primary: {
       main: "#121212",
     },
-    secondary: {
-      main: "#121212",
-    },
-  },
-  paper: {
-    background: "blue",
   },
 });
 
