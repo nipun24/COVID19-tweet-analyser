@@ -10,6 +10,16 @@ const darkTheme = createMuiTheme({
       main: "#121212",
     },
   },
+  typography: {
+    color: "rgba(255, 255, 255, 0.87);",
+  },
+  paper: {
+    root: {
+      backgroundColor: "#121212",
+      background:
+        "linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.16))",
+    },
+  },
 });
 
 ReactDOM.render(

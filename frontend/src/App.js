@@ -11,6 +11,7 @@ import {
   Paper,
   ListItemIcon,
   Divider,
+  Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ShowChartIcon from "@material-ui/icons/ShowChart";
@@ -19,6 +20,7 @@ import PieChartIcon from "@material-ui/icons/PieChart";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 import HomeIcon from "@material-ui/icons/Home";
 import { makeStyles } from "@material-ui/core/styles";
+import PieChart from "./PieChart.js";
 
 const useStyles = makeStyles({
   drawerTheme: {
@@ -29,6 +31,24 @@ const useStyles = makeStyles({
     background: "linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.16))",
   },
 });
+
+const PieData = [
+  {
+    id: "positive",
+    label: "positive",
+    value: 196,
+  },
+  {
+    id: "negative",
+    label: "negative",
+    value: 85,
+  },
+  {
+    id: "neutral",
+    label: "neutral",
+    value: 147,
+  },
+];
 
 const App = () => {
   const classes = useStyles();
@@ -103,28 +123,29 @@ const App = () => {
       <Grid
         style={{ height: "100vh" }}
         container
-        direction="column"
-        justify="space-around"
-        alignItems="stretch"
+        direction="row"
+        justify="space-evenly"
+        alignItems="center"
       >
-        <Grid
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="stretch"
-        >
+        <Grid item xs={12} sm={6}>
           <Paper>Time Graph</Paper>
-          <Paper>Location Based</Paper>
         </Grid>
 
-        <Grid
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="stretch"
-        >
-          <Paper>Heat Map</Paper>
-          <Paper>Pie Chart</Paper>
+        <Grid item xs={12} sm={6}>
+          <Paper>Time Graph</Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Paper>Time Graph</Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Paper
+            classes={{ root: classes.drawerTheme }}
+            style={{ height: "200px", width: "200px" }}
+          >
+            <PieChart data={PieData} />
+          </Paper>
         </Grid>
       </Grid>
     </div>
