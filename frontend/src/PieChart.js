@@ -1,7 +1,7 @@
 import React from "react";
 import { ResponsivePieCanvas } from "@nivo/pie";
 
-const PieChart = ({ data /* see data tab */ }) => (
+const PieChart = ({ data }) => (
   <ResponsivePieCanvas
     data={data}
     margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
@@ -24,6 +24,7 @@ const PieChart = ({ data /* see data tab */ }) => (
     motionStiffness={90}
     motionDamping={15}
     sortByValue={true}
+    isInteractive={false}
     theme={{
       tooltip: {
         container: {

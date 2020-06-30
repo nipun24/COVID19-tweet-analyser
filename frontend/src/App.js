@@ -21,6 +21,8 @@ import WhatshotIcon from "@material-ui/icons/Whatshot";
 import HomeIcon from "@material-ui/icons/Home";
 import { makeStyles } from "@material-ui/core/styles";
 import PieChart from "./PieChart.js";
+import LineChart from "./LineChart.js";
+import { PieData, LineData } from "./TempData.js";
 
 const useStyles = makeStyles({
   drawerTheme: {
@@ -31,24 +33,6 @@ const useStyles = makeStyles({
     background: "linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.16))",
   },
 });
-
-const PieData = [
-  {
-    id: "positive",
-    label: "positive",
-    value: 196,
-  },
-  {
-    id: "negative",
-    label: "negative",
-    value: 85,
-  },
-  {
-    id: "neutral",
-    label: "neutral",
-    value: 147,
-  },
-];
 
 const App = () => {
   const classes = useStyles();
@@ -128,7 +112,13 @@ const App = () => {
         alignItems="center"
       >
         <Grid item xs={12} sm={6}>
-          <Paper>Time Graph</Paper>
+          <Paper
+            onClick={() => console.log("click")}
+            classes={{ root: classes.drawerTheme }}
+            style={{ height: "200px", width: "500px" }}
+          >
+            <LineChart data={LineData} />
+          </Paper>
         </Grid>
 
         <Grid item xs={12} sm={6}>
@@ -141,6 +131,7 @@ const App = () => {
 
         <Grid item xs={12} sm={6}>
           <Paper
+            onClick={() => console.log("click")}
             classes={{ root: classes.drawerTheme }}
             style={{ height: "200px", width: "200px" }}
           >
