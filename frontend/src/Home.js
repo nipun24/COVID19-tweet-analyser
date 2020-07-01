@@ -21,10 +21,11 @@ const Home = (props) => {
         <ReactPlayer 
         // url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
         // url='https://youtu.be/I-Yd-_XIWJg?start=182&end=267'
-        url='https://youtu.be/ZzlMEKvQwYg'
+        url='https://youtu.be/9Uq2RJQUvew'
         loop = {true}
         width='100%'
         height='100%'
+        playing = {true}git
         />
         // screenfull.request(url)
     )
