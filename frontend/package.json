@@ -13,9 +13,12 @@
     "history": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-gif-player": "^0.4.2",
+    "react-player": "^2.4.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "screenfull": "^5.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
