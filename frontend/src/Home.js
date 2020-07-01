@@ -25,7 +25,7 @@ const Home = (props) => {
         loop = {true}
         width='100%'
         height='100%'
-        playing = {true}git
+        playing = {true}
         />
         // screenfull.request(url)
     )
