@@ -25,6 +25,8 @@ import PieChart from "./PieChart.js";
 import LineChart from "./LineChart.js";
 import { PieData, LineData } from "./TempData.js";
 
+import Map from "./components/Map.js";
+
 const useStyles = makeStyles({
   drawerTheme: {
     backgroundColor: "#121212",
@@ -151,7 +153,7 @@ const Dashboard = (props) => {
               margin: "40px 20px 0 0",
             }}
           >
-            <LineChart data={LineData} />
+            <Map />
           </Paper>
         </Grid>
 
