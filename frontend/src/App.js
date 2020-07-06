@@ -7,15 +7,13 @@ import Dashboard from "./Dashboard.js";
 
 const App = () => {
   let history = useHistory();
-  // let history = useHistory();
-  // const [history, setHistory] = React.useState(createBrowserHistory());
 
   return (
     <BrowserRouter history={history}>
       {/* routes */}
       <Switch>
         <Route exact path="/" render={(props) => <Home {...props} />} />
-        <Route path="/dashboard" render={() => <Dashboard />} />
+        <Route path="/dashboard" render={(props) => <Dashboard {...props} />} />
       </Switch>
     </BrowserRouter>
   );

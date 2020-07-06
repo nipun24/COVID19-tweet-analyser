@@ -1,17 +1,13 @@
-
-
-import React from 'react'
-import ReactPlayer from 'react-player'
+import React from "react";
 
 const Home = (props) => {
-    return (
-        <ReactPlayer 
-            url='https://youtu.be/9Uq2RJQUvew'
-            loop = {true}
-            width='100%'
-            height='100%'
-            playing = {true}
-        />
-    )
-}
-export default Home
+  return (
+    <div>
+      <button onClick={() => props.history.push("/dashboard")}>
+        go to dash
+      </button>
+      home
+    </div>
+  );
+};
+export default Home;

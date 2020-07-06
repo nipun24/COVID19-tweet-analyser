@@ -42,7 +42,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const classes = useStyles();
 
   const [isOpen, setDrawer] = React.useState(false);
@@ -59,9 +59,9 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div style={{ height: "100vh", overflowX: "hidden" }}>
       {/* Navbar */}
-      <AppBar position="fixed" classes={{ root: classes.appbarTheme }}>
+      <AppBar position="static" classes={{ root: classes.appbarTheme }}>
         <Toolbar variant="dense">
           <IconButton onClick={toggleDrawer(true)}>
             <MenuIcon />
@@ -78,14 +78,14 @@ const Dashboard = () => {
         classes={{ paper: classes.drawerTheme }}
       >
         <List style={{ width: "auto" }}>
-          <ListItem button>
+          <ListItem button onClick={() => props.history.push("/")}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
           <Divider classes={{ root: classes.dividerColor }} />
-          <ListItem button>
+          <ListItem button onClick={() => props.history.push("/dashboard")}>
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
@@ -120,35 +120,64 @@ const Dashboard = () => {
       </Drawer>
       {/* Graph components - tiles */}
       <Grid
-        style={{ height: "100vh" }}
+        style={{ height: "90vh" }}
         container
         direction="row"
         justify="space-evenly"
         alignItems="center"
+        spacing={5}
       >
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12} lg={6}>
           <Paper
-            onClick={() => console.log("click")}
             classes={{ root: classes.paperTheme }}
-            style={{ height: "200px", width: "500px" }}
+            style={{
+              height: "30vh",
+              minHeight: "200px",
+              minWidth: "500px",
+              margin: "40px 0 0 20px",
+            }}
           >
             <LineChart data={LineData} />
           </Paper>
         </Grid>
 
-        <Grid item xs={12} sm={6}>
-          <Paper>Time Graph</Paper>
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <Paper>Time Graph</Paper>
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12} lg={6}>
           <Paper
-            onClick={() => console.log("click")}
             classes={{ root: classes.paperTheme }}
-            style={{ height: "200px", width: "200px" }}
+            style={{
+              height: "30vh",
+              minHeight: "200px",
+              minWidth: "500px",
+              margin: "40px 20px 0 0",
+            }}
+          >
+            <LineChart data={LineData} />
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={12} lg={6}>
+          <Paper
+            classes={{ root: classes.paperTheme }}
+            style={{
+              height: "30vh",
+              minHeight: "200px",
+              minWidth: "500px",
+              margin: "0px 0 0 20px",
+            }}
+          >
+            Time Graph
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={12} lg={6}>
+          <Paper
+            classes={{ root: classes.paperTheme }}
+            style={{
+              height: "30vh",
+              minHeight: "200px",
+              minWidth: "500px",
+              margin: "0px 20px 0 0",
+            }}
           >
             <PieChart data={PieData} />
           </Paper>
