@@ -24,6 +24,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PieChart from "./PieChart.js";
 import LineChart from "./LineChart.js";
 import { PieData, LineData } from "./TempData.js";
+import Location from "./containers/Location.js";
 
 import Map from "./components/Map.js";
 
@@ -47,6 +48,7 @@ const useStyles = makeStyles({
 const Dashboard = (props) => {
   const classes = useStyles();
 
+  //drawer states and functions
   const [isOpen, setDrawer] = React.useState(false);
 
   const toggleDrawer = (isOpen) => (event) => {
@@ -58,6 +60,17 @@ const Dashboard = (props) => {
     }
 
     setDrawer(isOpen);
+  };
+
+  //Location Dialog states and functions
+  const [isLocationOpen, setLocationOpen] = React.useState(false);
+
+  const handleLocationOpen = () => {
+    setLocationOpen(true);
+  };
+
+  const handleLocationClose = () => {
+    setLocationOpen(false);
   };
 
   return (
@@ -136,7 +149,7 @@ const Dashboard = (props) => {
               height: "30vh",
               minHeight: "200px",
               minWidth: "500px",
-              margin: "40px 0 0 20px",
+              // margin: "40px 0 0 20px",
             }}
           >
             <LineChart data={LineData} />
@@ -150,8 +163,9 @@ const Dashboard = (props) => {
               height: "30vh",
               minHeight: "200px",
               minWidth: "500px",
-              margin: "40px 20px 0 0",
+              // margin: "40px 20px 0 0",
             }}
+            onClick={() => handleLocationOpen()}
           >
             <Map />
           </Paper>
@@ -164,7 +178,7 @@ const Dashboard = (props) => {
               height: "30vh",
               minHeight: "200px",
               minWidth: "500px",
-              margin: "0px 0 0 20px",
+              // margin: "0px 0 0 20px",
             }}
           >
             Time Graph
@@ -178,13 +192,14 @@ const Dashboard = (props) => {
               height: "30vh",
               minHeight: "200px",
               minWidth: "500px",
-              margin: "0px 20px 0 0",
+              // margin: "0px 20px 0 0",
             }}
           >
             <PieChart data={PieData} />
           </Paper>
         </Grid>
       </Grid>
+      <Location open={isLocationOpen} handleClose={handleLocationClose} />
     </div>
   );
 };
