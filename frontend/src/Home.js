@@ -1,35 +1,35 @@
-import React from 'react';
-import './Home.css'
-import { Typography, makeStyles } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import "./Home.css";
+import { Typography, makeStyles } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   button: {
-    borderRadius: 100,
-    marginTop:320,
-    marginLeft:670,
+    // borderRadius: 100,
+    marginTop: 320,
+    marginLeft: 670,
   },
-  heading:{
-    color:"black"
-  }
-})
-export default function Home() {
+  heading: {
+    color: "black",
+  },
+});
+
+const Home = (props) => {
   const classes = useStyles();
-    return(
-        <div className={classes.button}>
-          <Typography 
-            className={classes.heading}
-            variant='h3'
-          >
-            Heading
-          </Typography>
-          <Button 
-            variant="contained"
-            color="primary"
-          >
-            Go to Dashboard
-          </Button>
-          
-        </div>
-    )
-}
+  return (
+    <div styles={{}}>
+      <Typography className={classes.heading} variant="h3">
+        Heading
+      </Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => props.history.push("/dashboard")}
+      >
+        Go to Dashboard
+      </Button>
+    </div>
+  );
+};
+
+export default Home;

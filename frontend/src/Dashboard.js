@@ -163,11 +163,14 @@ const Dashboard = (props) => {
               height: "30vh",
               minHeight: "200px",
               minWidth: "500px",
+              "&:hover": {
+                cursor: "pointer",
+              },
               // margin: "40px 20px 0 0",
             }}
             onClick={() => handleLocationOpen()}
           >
-            <Map />
+            <Map interactive={false} />
           </Paper>
         </Grid>
 
