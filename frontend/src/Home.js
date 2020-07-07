@@ -5,30 +5,30 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   button: {
-    borderRadius: 100
+    borderRadius: 100,
+    marginTop:320,
+    marginLeft:670,
   },
   heading:{
-    marginLeft:550,
-    marginTop:350,
+    color:"black"
   }
 })
 export default function Home() {
   const classes = useStyles();
     return(
-        <div>
+        <div className={classes.button}>
           <Typography 
             className={classes.heading}
             variant='h3'
           >
-            Heading Here
+            Heading
+          </Typography>
           <Button 
-            className={classes.button}
             variant="contained"
             color="primary"
           >
             Go to Dashboard
           </Button>
-          </Typography>
           
         </div>
     )
