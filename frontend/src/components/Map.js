@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReactMapGL from "react-map-gl";
-import { MAPBOX_API } from "../keys/API_KEYS.js";
 
 const Map = () => {
   const [viewport, setViewPort] = useState({
@@ -14,7 +13,7 @@ const Map = () => {
     <div>
       <ReactMapGL
         {...viewport}
-        mapboxApiAccessToken={MAPBOX_API}
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API}
         onViewportChange={(viewport) => setViewPort(viewport)}
       ></ReactMapGL>
     </div>
