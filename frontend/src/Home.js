@@ -1,12 +1,35 @@
 import React from 'react';
 import './Home.css'
+import { Typography, makeStyles } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
-
-export default function ImgMediaCard() {
-  
+const useStyles = makeStyles({
+  button: {
+    borderRadius: 100
+  },
+  heading:{
+    marginLeft:550,
+    marginTop:350,
+  }
+})
+export default function Home() {
+  const classes = useStyles();
     return(
-        <body>
-            
-        </body>
+        <div>
+          <Typography 
+            className={classes.heading}
+            variant='h3'
+          >
+            Heading Here
+          <Button 
+            className={classes.button}
+            variant="contained"
+            color="primary"
+          >
+            Go to Dashboard
+          </Button>
+          </Typography>
+          
+        </div>
     )
 }
