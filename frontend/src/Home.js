@@ -4,7 +4,7 @@ import { Typography, makeStyles, Grid, Button } from "@material-ui/core";
 
 const useStyles = makeStyles({
   heading: {
-    color: "black",
+    color: "#121212",
   },
 });
 
@@ -13,15 +13,14 @@ const Home = (props) => {
   return (
     <div id="background">
       <Grid
-        style={{ height: "90vh" }}
+        style={{ height: "100%" }}
         container
         direction="column"
         justify="center"
         alignItems="center"
       >
-        <Typography className={classes.heading} variant="h3">
-          Heading
-        </Typography>
+        <Typography variant="h3">Heading</Typography>
+        <br />
         <Button
           variant="contained"
           color="primary"
