@@ -1,15 +1,13 @@
-const app = require('express')();
-const server = require('http').Server(app);
+const express = require('express');
+const app = express();
+const server = app.listen(3000,()=>{console.log('localhost:3000')});
+
+app.use(express.static('public'))
+
 const io = require('socket.io')(server);
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
-
 const sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database('./twitter.db');
 
-// Send current time to all connected clients
 const sendTime = () => {
     let sql = 'SELECT * FROM sentiment';
     var obj = [{id:'positive',label:'positive',value:0},
@@ -37,5 +35,3 @@ const sendTime = () => {
 }
 
 setInterval(sendTime, 10000);
-
-server.listen(3000);
