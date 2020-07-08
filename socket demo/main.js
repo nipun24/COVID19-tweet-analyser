@@ -8,7 +8,7 @@ const io = require('socket.io')(server);
 const sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database('./twitter.db');
 
-const sendTime = () => {
+const sendPie = () => {
     let sql = 'SELECT * FROM sentiment';
     var obj = [{id:'positive',label:'positive',value:0},
               {id:'negative',label:'negative',value:0},
@@ -29,9 +29,9 @@ const sendTime = () => {
             obj[2].value++;
           }
         });
-        io.emit('time',obj);
+        io.emit('pie',JSON.stringify(obj));
         // console.log(obj);
       });
 }
 
-setInterval(sendTime, 10000);
+io.on('connection',() => sendPie())
