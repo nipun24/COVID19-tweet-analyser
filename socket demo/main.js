@@ -1,16 +1,10 @@
-var http = require('http'),
-    fs = require('fs'),
-    // NEVER use a Sync function except at start-up!
-    index = fs.readFileSync(__dirname + '/index.html');
+var app = require('express')();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-// Send index.html to all requests
-var app = http.createServer(function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end(index);
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
 });
-
-// Socket.io server listens to our app
-var io = require('socket.io').listen(app);
 
 const sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database('./twitter.db');
@@ -18,30 +12,30 @@ let db = new sqlite3.Database('./twitter.db');
 // Send current time to all connected clients
 function sendTime() {
     let sql = 'SELECT * FROM sentiment';
-    var positive = 0;
-    var negative = 0;
-    var neutral = 0;
+    var obj = [{id:'positive',label:'positive',value:0},
+              {id:'negative',label:'negative',value:0},
+              {id:'neutral',label:'neutral',value:0}]
     db.all(sql, [], (err, rows) => {
         if (err) {
           throw err;
         }
         rows.forEach((row) => {
-          var sentiment = row.sentiment
-        //   var new_val = 0
+          var sentiment = row.sentiment;
           if (sentiment>=0.2){
-            positive++
+            obj[0].value++;
           }
           else if (sentiment <= -0.2){
-            negative++
+            obj[1].value++;
           }
           else {
-            neutral++
+            obj[2].value++;
           }
         });
-        io.emit('time',"positive ->" + String(positive) + " negative ->" + String(negative) + " neutral ->" +String(neutral));
+        io.emit('time',obj);
+        // console.log(obj);
       });
 }
 
 setInterval(sendTime, 10000);
 
-app.listen(3000);
+server.listen(3000);
