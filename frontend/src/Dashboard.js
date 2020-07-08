@@ -25,6 +25,8 @@ import PieChart from "./PieChart.js";
 import LineChart from "./LineChart.js";
 import { PieData, LineData } from "./TempData.js";
 import Location from "./containers/Location.js";
+import Pie from "./containers/Pie.js";
+import Time from "./containers/Time.js";
 
 import Map from "./components/Map.js";
 
@@ -44,6 +46,13 @@ const useStyles = makeStyles({
     background: "linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.16))",
   },
 });
+
+const tileStyle = {
+  height: "30vh",
+  minHeight: "200px",
+  minWidth: "500px",
+  margin: "20px",
+};
 
 const Dashboard = (props) => {
   const classes = useStyles();
@@ -65,13 +74,11 @@ const Dashboard = (props) => {
   //Location Dialog states and functions
   const [isLocationOpen, setLocationOpen] = React.useState(false);
 
-  const handleLocationOpen = () => {
-    setLocationOpen(true);
-  };
+  //Pie Chart Dialog states and functions
+  const [isPieOpen, setPieOpen] = React.useState(false);
 
-  const handleLocationClose = () => {
-    setLocationOpen(false);
-  };
+  //Time ghaph dialog states and functions
+  const [isTimeOpen, setTimeOpen] = React.useState(false);
 
   return (
     <div style={{ height: "100vh", overflowX: "hidden" }}>
@@ -140,17 +147,12 @@ const Dashboard = (props) => {
         direction="row"
         justify="space-evenly"
         alignItems="center"
-        spacing={5}
       >
         <Grid item xs={12} sm={12} lg={6}>
           <Paper
             classes={{ root: classes.paperTheme }}
-            style={{
-              height: "30vh",
-              minHeight: "200px",
-              minWidth: "500px",
-              // margin: "40px 0 0 20px",
-            }}
+            style={tileStyle}
+            onClick={() => setTimeOpen(true)}
           >
             <LineChart data={LineData} />
           </Paper>
@@ -159,31 +161,15 @@ const Dashboard = (props) => {
         <Grid item xs={12} sm={12} lg={6}>
           <Paper
             classes={{ root: classes.paperTheme }}
-            style={{
-              height: "30vh",
-              minHeight: "200px",
-              minWidth: "500px",
-              "&:hover": {
-                cursor: "pointer",
-              },
-              // margin: "40px 20px 0 0",
-            }}
-            onClick={() => handleLocationOpen()}
+            style={tileStyle}
+            onClick={() => setLocationOpen(true)}
           >
             <Map interactive={false} />
           </Paper>
         </Grid>
 
         <Grid item xs={12} sm={12} lg={6}>
-          <Paper
-            classes={{ root: classes.paperTheme }}
-            style={{
-              height: "30vh",
-              minHeight: "200px",
-              minWidth: "500px",
-              // margin: "0px 0 0 20px",
-            }}
-          >
+          <Paper classes={{ root: classes.paperTheme }} style={tileStyle}>
             Time Graph
           </Paper>
         </Grid>
@@ -192,17 +178,20 @@ const Dashboard = (props) => {
           <Paper
             classes={{ root: classes.paperTheme }}
             style={{
-              height: "30vh",
-              minHeight: "200px",
-              minWidth: "500px",
-              // margin: "0px 20px 0 0",
+              ...tileStyle,
+              "&:hover": {
+                cursor: "pointer",
+              },
             }}
+            onClick={() => setPieOpen(true)}
           >
             <PieChart data={PieData} />
           </Paper>
         </Grid>
       </Grid>
-      <Location open={isLocationOpen} handleClose={handleLocationClose} />
+      <Location open={isLocationOpen} toggle={setLocationOpen} />
+      <Pie open={isPieOpen} toggle={setPieOpen} />
+      <Time open={isTimeOpen} toggle={setTimeOpen} />
     </div>
   );
 };

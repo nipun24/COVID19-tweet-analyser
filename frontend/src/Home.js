@@ -1,15 +1,8 @@
 import React from "react";
 import "./Home.css";
-import { Typography, makeStyles, Grid, Button } from "@material-ui/core";
-
-const useStyles = makeStyles({
-  heading: {
-    color: "#121212",
-  },
-});
+import { Typography, Grid, Button } from "@material-ui/core";
 
 const Home = (props) => {
-  const classes = useStyles();
   return (
     <div id="background">
       <Grid
@@ -19,7 +12,9 @@ const Home = (props) => {
         justify="center"
         alignItems="center"
       >
-        <Typography variant="h3">Heading</Typography>
+        <Typography variant="h3">
+          Sentiment Analysis of COVID-19 Tweets
+        </Typography>
         <br />
         <Button
           variant="contained"

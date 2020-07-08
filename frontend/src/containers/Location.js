@@ -25,14 +25,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const Location = ({ open, handleClose }) => {
+const Location = ({ open, toggle }) => {
   const classes = useStyles();
 
   return (
     <Dialog
       fullScreen
       open={open}
-      onClose={handleClose}
+      onClose={() => toggle(false)}
       TransitionComponent={Transition}
     >
       <AppBar className={classes.appBar}>
@@ -40,13 +40,13 @@ const Location = ({ open, handleClose }) => {
           <IconButton
             edge="start"
             color="inherit"
-            onClick={handleClose}
+            onClick={() => toggle(false)}
             aria-label="close"
           >
             <CloseIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Locaion Based
+            Location Based
           </Typography>
         </Toolbar>
       </AppBar>
