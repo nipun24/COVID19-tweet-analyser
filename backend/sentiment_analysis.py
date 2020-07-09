@@ -24,7 +24,6 @@ class listener(StreamListener):
   count = 0
   def on_connect(self):
     print("Connected!")
-    
   def on_data(self, data):
       try:
           data = json.loads(data)
@@ -32,11 +31,11 @@ class listener(StreamListener):
           tweet = unidecode(data['text'])
           analysis = TextBlob(tweet)
           sentiment = analysis.sentiment.polarity
-          print(listener.count)
+          print(data['created_at'])
           c.execute("INSERT INTO sentiment (unix, created_at, sentiment, user_location, place) VALUES (?, ?, ?, ?, ?)",
                 (data['timestamp_ms'], data['created_at'], sentiment, data['user']['location'], data['place']))
           conn.commit()
-          if listener.count == 100:
+          if listener.count == 20:
             return False
       except KeyError as e:
           print(str(e))
