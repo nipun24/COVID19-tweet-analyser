@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import "../styles/Home.css";
 import { Typography, Grid, Button } from "@material-ui/core";
 
 const Home = (props) => {
@@ -12,7 +12,7 @@ const Home = (props) => {
         justify="center"
         alignItems="center"
       >
-        <Typography variant="h3">
+        <Typography variant="h3" align="center">
           Sentiment Analysis of COVID-19 Tweets
         </Typography>
         <br />

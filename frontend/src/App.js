@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 
 // importing routes
-import Home from "./Home.js";
-import Dashboard from "./Dashboard.js";
+import Home from "./containers/Home.js";
+import Dashboard from "./containers/Dashboard.js";
 
 const App = () => {
   let history = useHistory();

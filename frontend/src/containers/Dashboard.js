@@ -22,15 +22,15 @@ import WhatshotIcon from "@material-ui/icons/Whatshot";
 import HomeIcon from "@material-ui/icons/Home";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import { makeStyles } from "@material-ui/core/styles";
-import PieChart from "./PieChart.js";
-import LineChart from "./LineChart.js";
-import { LineData } from "./TempData.js";
-import Location from "./containers/Location.js";
-import Pie from "./containers/Pie.js";
-import Time from "./containers/Time.js";
+import PieChart from "../components/PieChart.js";
+import LineChart from "../components/LineChart.js";
+import { LineData } from "../TempData.js";
+import Location from "./Location.js";
+import Pie from "./Pie.js";
+import Time from "./Time.js";
 import io from "socket.io-client";
 
-import Map from "./components/Map.js";
+import Map from "../components/Map.js";
 
 const useStyles = makeStyles({
   drawerTheme: {
@@ -215,7 +215,7 @@ const Dashboard = (props) => {
               }}
               onClick={() => setPieOpen(true)}
             >
-              <PieChart data={pieData} />
+              <PieChart data={pieData} interactive={false} />
             </Paper>
           </Grid>
         </Grid>
