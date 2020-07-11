@@ -117,6 +117,15 @@ const About = (props) => {
         style={{ margin: "0px 0 20px 0" }}
       >
         About
+        <br />
+          <Typography
+          align="center"
+          variant="h6"
+          style={{ margin: "0px 0 20px 0" }}
+        >
+          We are the team 'We Are Groot' and we are a bunch of developers and gamers like Groot himself 😜. 
+          We are graduates from IIIT Trichy and huge fans of MARVEL cinemas [Clear from the team name I guess 😁]. Anyways we are most delighted to present this interactive dashboard and do show love & support for us on the social media 📱. Thanks!!
+        </Typography>
       </Typography>
       <Grid
         container
