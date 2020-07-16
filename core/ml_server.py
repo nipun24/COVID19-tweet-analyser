@@ -14,7 +14,6 @@ import urllib.parse
 import os
 import pymongo
 from dotenv import load_dotenv
-import multiprocessing
 
 load_dotenv()
 port = int(os.getenv('PORT', 5000))
@@ -102,12 +101,9 @@ def stream():
         twitterStream = Stream(auth, listener())
         twitterStream.filter(track=['#covidindia', '#covid_19india', '#covid19india', '#GCCCovid19SOS',
                                     '#Covid19Chennai', '#covid19#india', '#IndiaFightsCOVID19', '#lockdownindia', '#Lockdown4', '#lockdown4guidelines', '#socialdistancingIndia', '#stayathomeindia',
-                                    '#StayHomeIndia', '#CoronaUpdatesInIndia'])
+                                    '#StayHomeIndia', '#CoronaUpdatesInIndia'], is_async=True)
     except Exception as e:
         print(str(e))
-
-
-process = multiprocessing.Process(target=stream)
 
 
 @app.route('/')
@@ -117,27 +113,8 @@ def home():
 
 @app.route('/start')
 def start():
-    process.start()
-    print(process)
+    stream()
     return "streaming started"
-
-
-@app.route('/status')
-def status():
-    if process.is_alive():
-        return "streaming is running"
-    else:
-        return "streaming is stopped"
-
-
-@app.route('/stop')
-def stop():
-    if process.is_alive():
-        process.terminate()
-
-    return "streaming stopped"
-
-#     return 'streaming'
 
 
 if __name__ == "__main__":
