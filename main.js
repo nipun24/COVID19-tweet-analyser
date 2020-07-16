@@ -32,10 +32,12 @@ const updater = async (io, interval) => {
   if (!fs.existsSync("checkpoint.json")) {
     init(interval);
   }
-  const time_str = new Date().toLocaleTimeString("en-US", {
-    timeZone: "Asia/Kolkata",
-    hour12: false,
-  });
+  const time_str = new Date()
+    .toLocaleTimeString("en-US", {
+      timeZone: "Asia/Kolkata",
+      hour12: false,
+    })
+    .slice(0, 5);
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
