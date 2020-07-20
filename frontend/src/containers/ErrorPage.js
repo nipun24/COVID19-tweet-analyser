@@ -12,7 +12,7 @@ const ErrorPage = (props) => {
   const classes = useStyles();
   return (
     <Grid
-      style={{ height: "100%", widh: "100%" }}
+      style={{ height: "100%", width: "100%" }}
       direction="column"
       alignItems="center"
       justify="center"
