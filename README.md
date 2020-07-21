@@ -1,6 +1,6 @@
 # Sentiment Analysis of COVID-19 Tweets - Visualization Dashboard
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v3](https://img.shields.io/github/license/nipun24/COVID19-tweet-analyser)](https://opensource.org/licenses/MIT)
 [![Repository Size](https://img.shields.io/github/repo-size/nipun24/COVID19-tweet-analyser)](https://github.com/nipun24/COVID19-tweet-analyser/archive/master.zip)
 [![Website Status](https://img.shields.io/website?url=https%3A%2F%2Fcovid-19sentiment.eu-gb.cf.appdomain.cloud%2F)](https://covid-19sentiment.eu-gb.cf.appdomain.cloud/)
 
