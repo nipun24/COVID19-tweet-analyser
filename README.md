@@ -70,4 +70,4 @@ The project is deployed on IBM Cloud Foundry. [Link](https://covid-19sentiment.e
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
